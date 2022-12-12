@@ -2,8 +2,10 @@ import React from "react";
 import "./Film.css";
 import { StarOutlined } from "@ant-design/icons";
 import moment from "moment";
+import { useNavigate } from "react-router";
 
 const Film = (props) => {
+  const navigate = useNavigate();
   const { phim } = props;
 
   return (
@@ -26,7 +28,12 @@ const Film = (props) => {
           </p>
           <div className="grid grid-cols-2">
             <div className="col-start-1">
-              <button class="tag tag-blue">Mua vé</button>
+              <button
+                class="tag tag-blue"
+                onClick={() => navigate(`/detail/${phim.maPhim}`)}
+              >
+                Mua vé
+              </button>
               <a class="tag tag-pink" target="_blank" href={phim.trailer}>
                 Xem Trailer
               </a>

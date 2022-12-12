@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Button, Drawer, Space, Radio, Tabs } from "antd";
 import Login from "../../page/login/Login";
 import Register from "../../page/register/Register";
 import _ from "lodash";
-import { ACCESSTOKEN, TOKEN, USER_LOGIN } from "../../util/setting/config";
+import { ACCESSTOKEN, USER_LOGIN } from "../../util/setting/config";
 import { useDispatch, useSelector } from "react-redux";
-import { dangNhapAction } from "../../redux/action/QuanLyNguoiDungAction";
-import { DANG_NHAP_ACTION } from "../../redux/constants/QuanLyNguoiDungConstants";
 
 const Header = () => {
+  const navigate = useNavigate();
   const { userLogin } = useSelector((state) => state.dangKyTaiKhoanReducer);
 
   const renderLogin = () => {
@@ -78,27 +77,24 @@ const Header = () => {
           <ul className="items-stretch hidden space-x-3 lg:flex">
             <li className="flex">
               <NavLink
-                aria-current="page"
-                rel="noopener noreferrer"
-                to="/home"
+                to="/"
                 className="flex items-center px-4 -mb-1 dark:border-transparent text-white text-xl hover:text-orange-500"
               >
                 Home
               </NavLink>
             </li>
             <li className="flex">
-              <NavLink
-                rel="noopener noreferrer"
-                to="/contact"
+              <button
+                onClick={() => navigate("/contact")}
                 className="flex items-center px-4 -mb-1 dark:border-transparent text-white text-xl hover:text-orange-500"
               >
                 Contact
-              </NavLink>
+              </button>
             </li>
             <li className="flex">
               <NavLink
                 rel="noopener noreferrer"
-                to="/news"
+                to="/user"
                 className="flex items-center px-4 -mb-1 dark:border-transparent text-white text-xl hover:text-orange-500"
               >
                 News
